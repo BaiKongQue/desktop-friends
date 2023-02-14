@@ -1,16 +1,20 @@
 #include "Game.h"
 
 Display *Game::display = nullptr;
+Entities *Game::entities = nullptr;
 
 Game::Game() :
 	running(false)
 {
 	Game::display = new Display();
+	Game::entities = new Entities();
 }
 
 Game::~Game() {
 	delete Game::display;
+	delete Game::entities;
 	Game::display = nullptr;
+	Game::entities = nullptr;
 }
 
 void Game::Run() {

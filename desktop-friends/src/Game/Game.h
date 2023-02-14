@@ -2,14 +2,17 @@
 #ifndef DF_GAME
 #define	DF_GAME
 
-#include "../Display/Display.h"
 #include <SDL.h>
 #include <SDL_events.h>
+#include "../Display/Display.h"
+#include "../Definitions/types.def.h"
+
+typedef
 
 class Game {
 public:
 	static Display *display;
-
+	static Entities *entities;
 private:
 	bool running;
 public:

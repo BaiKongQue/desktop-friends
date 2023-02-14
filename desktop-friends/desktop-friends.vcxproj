@@ -137,11 +137,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entity\Entity.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\Display\Display.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Definitions\types.def.h" />
+    <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Display\Display.h" />
   </ItemGroup>
