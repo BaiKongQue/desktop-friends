@@ -38,7 +38,7 @@
     <ClInclude Include="src\Entity\Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Definitions\types.def.h">
+    <ClInclude Include="src\Definitions\definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
