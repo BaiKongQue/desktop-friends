@@ -48,7 +48,11 @@ void Sprite::ChangeState(int state) {
 
 SDL_Texture *Sprite::GetTexture() { return this->texture; }
 SDL_Rect &Sprite::GetHitbox() {
-	// throw error if the state is larger than the number in hitbox
+	// @TODO: remove later
+	int state = 0;
+	int frame = 0;
+
+	/*// throw error if the state is larger than the number in hitbox
 	if (this->state >= this->hitBoxes.size()) {
 		printf("Sprite::GetHitbox() - state is larger than the number in hitbox. (%d/%d)", this->state, this->hitBoxes.size());
 		exit(1);
@@ -60,7 +64,8 @@ SDL_Rect &Sprite::GetHitbox() {
 		exit(1);
 	}
 
-	return this->hitBoxes[this->state][this->animation->GetFrame()];
+	return this->hitBoxes[this->state][this->animation->GetFrame()];*/
+	return this->hitBoxes[state][frame];
 }
 SDL_Rect &Sprite::GetSrcRect() { return this->srcRect; }
 Pos &Sprite::GetOrigin() { return this->origin; }
