@@ -24,7 +24,7 @@ public:
 protected:
 	Sprite *sprite;
 	EntityType type;
-	SDL_Rect destRect;
+	SDL_Rect *destRect;
 	float velocityX;
 	float velocityY;
 	float acceleration;

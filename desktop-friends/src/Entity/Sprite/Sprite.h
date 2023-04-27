@@ -16,13 +16,14 @@ private:
 	SDL_Texture *texture;
 	Animation *animation;
 	SDL_Rect srcRect;
+	SDL_Rect *entityRect;
 	Pos origin;
 	HitBoxes hitBoxes;
 	int baselineHeightOffsets;
 	int state;
 	int nextState;
 public:
-	Sprite(const char *image, int width, int height);
+	Sprite(const char *image, int width, int height, SDL_Rect *entityRect);
 	~Sprite();
 
 	void Update(float delta);

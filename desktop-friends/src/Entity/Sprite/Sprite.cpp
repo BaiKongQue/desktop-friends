@@ -1,9 +1,10 @@
 #include "Sprite.h"
 
-Sprite::Sprite(const char *image, int width, int height) :
+Sprite::Sprite(const char *image, int width, int height, SDL_Rect *entityRect) :
 	texture(nullptr),
 	animation(nullptr),
 	srcRect({ 0,0,32,32 }),
+	entityRect(entityRect),
 	origin({32/2,height - 4}),
 	hitBoxes(),
 	baselineHeightOffsets(4),
@@ -48,11 +49,11 @@ void Sprite::ChangeState(int state) {
 
 SDL_Texture *Sprite::GetTexture() { return this->texture; }
 SDL_Rect &Sprite::GetHitbox() {
-	// @TODO: remove later
-	int state = 0;
-	int frame = 0;
+	// if curr hitbox size is 1 then return the first hitbox
+	if (this->hitBoxes[this->state].size() == 1)
+		return this->hitBoxes[this->state][0];
 
-	/*// throw error if the state is larger than the number in hitbox
+	// throw error if the state is larger than the number in hitbox
 	if (this->state >= this->hitBoxes.size()) {
 		printf("Sprite::GetHitbox() - state is larger than the number in hitbox. (%d/%d)", this->state, this->hitBoxes.size());
 		exit(1);
@@ -63,9 +64,11 @@ SDL_Rect &Sprite::GetHitbox() {
 		printf("Error: current frame is larger than the number of hitboxs in the current state. (%d/%d)", this->animation->GetFrame(), this->hitBoxes[this->state].size());
 		exit(1);
 	}
-
-	return this->hitBoxes[this->state][this->animation->GetFrame()];*/
-	return this->hitBoxes[state][frame];
+	SDL_Rect &rect = this->hitBoxes[this->state][this->animation->GetFrame()];
+	rect.x = this->entityRect->x;
+	rect.y = this->entityRect->y;
+	return rect;
+	// return this->hitBoxes[state][frame];
 }
 SDL_Rect &Sprite::GetSrcRect() { return this->srcRect; }
 Pos &Sprite::GetOrigin() { return this->origin; }
